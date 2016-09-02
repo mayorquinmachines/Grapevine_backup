@@ -1,0 +1,127 @@
+{% if rez %}
+
+
+{% if page %}
+{% set i = page|int %}
+{% else %}
+{% set i = 1 %}
+{% endif %}
+
+{% for doc in rez.hits.hits%}
+<!--<center><h3><font color="#b2dfdb">GrapeVine</font></h3></center>-->
+<br>
+<center><img src="/home/ubuntu/logo_grape.png" alt="grapelogo" style="top: 25px; left: 500px;"></img></center>
+<body bgcolor="#343d46">
+<br>
+
+<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+    <a href="http://52.222.30.242/grapedash"class="btn-floating btn-large red">
+      <i class="large material-icons">dashboard</i>
+    </a>
+  </div>
+
+
+<!--<div id="container" class="row">
+<form class="col s3" action="" method="post">
+    <div class="input-field col s12">
+        <input class="validate" type="text" name="term" id="term">
+        <label for="term">PlaceHolder</label>
+    </div>
+        <input type="hidden" name="cd_id" value="{{doc._id}}">
+        </form>
+</div>-->
+
+<div id="container2" class="row">
+<div class="col s10 m12 l9">	
+	<div class="card teal white z-depth-2" style="left: 180px; top: 20px;">
+		<div class="card-content">
+			<center><strong><p><font size="6">{{doc._source.name}}</font></p></strong></center>
+			<center><p><font size="6">Stars: {{doc._source.stars}}</font></p></center>
+			<p><font size="5">{{doc._source.text | safe}}</font></p>
+                        <center><p><a href={{doc._source.link}} target="_blank">Review Link</a></p></center>
+	  	</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+<div style="position: relative; left:250px;" class="row">
+<div class="col s15">	
+	<div class="card white z-depth-2">
+		<div class="card-content">
+<!-- Trigger the Modal -->
+<img id="myImg" src={{doc._source.path}} alt={{doc._source.name}} width="300" height="200">
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- The Close Button -->
+  <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+  <!-- Modal Content (The Image) -->
+  <img class="modal-content" id="img01">
+
+  <!-- Modal Caption (Image Text) -->
+  <div id="caption"></div>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById('myImg');
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    modalImg.alt = this.alt;
+    captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+</script>
+</div>
+</div>
+</div>
+
+{% if cat_lst | length>0 %}
+<div id="container2" class="row">
+<div class="col s3">
+        <div class="card teal tiny lighten-5 z-depth-2" style="left: 180px; top: 10px;">
+                <div class="card-content">
+<h4>Chief Complaints</h4>
+<ul>
+{% for tm in cat_lst%}
+  <li>{{tm}}</li>
+{% endfor %}
+</ul>
+
+                </div>
+                </div>
+                </div>
+                </div>
+{% endif %}
+</div>
+
+
+<div style="bottom: 0px; right: 250px;"><a title="Conclude Review" class="waves-effect waves-light btn-default navbar-btn" style="top: 25px; left: 500px;" href="{{url_for('grape_next', page=i+1, cd_id=doc['_id'])}}">
+<i class="material-icons icon-green medium">ic_check</i></a></div>
+</a>
+
+
+
+{% endfor %}
+
+</body>
+{% endif %}
+

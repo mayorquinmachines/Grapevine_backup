@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+
+{% if qq %}
+{% if page %}
+{% set i = page|int %}
+{% else %}
+{% set i = 1 %}
+{% endif %}
+
+<!--<center><h3><font color="#b2dfdb">GrapeVine</font></h3></center>-->
+<br>
+<center><img src="/home/ubuntu/logo_grape.png" alt="grapelogo" width="30%" style="top: 35px; left: 500px;"></img></center>
+<div id="container" style="position: absolute; top: 225px; right: 50px;">
+<a target="_blank" href="http://52.222.30.242/rev_dump"class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons" style="display:inline-block">file_download</i></a>
+<a target="_blank" href="http://52.222.30.242/grapevine"class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons" style="top: 20px">find_in_page</i></a></div>
+<body bgcolor="#65737e">
+<br>
+
+  <head>
+    <style>
+      rect.bordered {
+        stroke: #E6E6E6;
+        stroke-width:2px;   
+      }
+
+      text.mono {
+        font-size: 14pt;
+        font-family: Consolas, courier;
+        fill: #aaa;
+      }
+
+      text.axis-workweek {
+        fill: #fff8dc;
+      }
+
+      text.axis-worktime {
+        fill: #fff8dc;
+      }
+</style>
+<style>
+
+	body {
+	  font: 10px sans-serif;
+	  margin: 0;
+	}
+
+	path.line {
+	  fill: none;
+	  stroke: #666;
+	  stroke-width: 3.5px;
+	}
+
+	path.area {
+	  fill: #e7e7e7;
+	}
+
+	.axis {
+	  shape-rendering: crispEdges;
+	}
+
+	.x.axis line {
+	  stroke: #fff;
+	}
+
+	.x.axis .minor {
+	  stroke-opacity: .8;
+	}
+
+	.x.axis path {
+	  display: none;
+	}
+
+	.y.axis line, .y.axis path {
+	  fill: none;
+	  stroke: #000;
+	}
+	.guideline {
+	  margin-right: 100px;
+	  float: right;
+	}
+
+
+</style>
+
+
+<div id="container" class="row" style="position: absolute; top: 300px; left: 420px;">
+<div class="col s12">
+        <div class="card white">
+<!-- RMG color = "176dae" LMG color= "dd8b0e" -->
+    <h3 style="position: absolute; left:50px;"><font color="3081b9">RMG</font> and <font color="ff7f0e">LMG</font> Monthly Star Ratings</h3>
+                <div class="card-content">
+<svg></svg>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+
+var lmargin = {top: 80, right: 80, bottom: 80, left: 80},
+    lwidth = 700 - lmargin.left - lmargin.right,
+    lheight = 500 - lmargin.top - lmargin.bottom;
+
+var parse = d3.time.format("%b %Y").parse;
+
+// Scales and axes. Note the inverted domain for the y-scale: bigger is up!
+var lx = d3.time.scale().range([0, lwidth]),
+    ly = d3.scale.linear().range([lheight, 0]),
+    xAxis = d3.svg.axis().scale(lx).tickSize(-lheight).tickSubdivide(true),
+    yAxis = d3.svg.axis().scale(ly).ticks(4).orient("right");
+
+// An area generator, for the light fill.
+var larea = d3.svg.area()
+    .interpolate("monotone")
+    .x(function(d) { return lx(d.date); })
+    .y0(lheight)
+    .y1(function(d) { return ly(d.price); });
+
+// A line generator, for the dark stroke.
+var line = d3.svg.line()
+    .interpolate("bundle")
+    .x(function(d) { return lx(d.date); })
+    .y(function(d) { return ly(d.price); });
+
+d3.csv("timeline", type, function(error, data) {
+
+  // Filter to one symbol; the S&P 500.
+  var values = data.filter(function(d) {
+    return d.symbol == "RMG";;
+  });
+
+  var lmg = data.filter(function(d) {
+    return d.symbol == "LMG";
+  });
+
+
+  // Compute the minimum and maximum date, and the maximum price.
+  lx.domain([values[0].date, values[values.length - 1].date]);
+  ly.domain([0, d3.max(values, function(d) { return d.price; })]).nice();
+
+  // Add an SVG element with the desired dimensions and margin.
+  var svg = d3.select("svg")
+      .attr("width", lwidth + lmargin.left + lmargin.right)
+      .attr("height", lheight + lmargin.top + lmargin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + lmargin.left + "," + lmargin.top + ")")
+
+  // Add the clip path.
+  svg.append("clipPath")
+      .attr("id", "clip")
+    .append("rect")
+      .attr("width", lwidth)
+      .attr("height", lheight);
+
+  // Add the x-axis.
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + lheight + ")")
+      .call(xAxis);
+
+  // Add the y-axis.
+  svg.append("g")
+      .attr("class", "y axis")
+      .attr("transform", "translate(" + lwidth + ",0)")
+      .call(yAxis);
+
+
+  var colors = d3.scale.category10();
+  svg.selectAll('.line')
+    .data([values, lmg])
+    .enter()
+      .append('path')
+        .attr('class', 'line')
+        .style('stroke', function(d) {
+          return colors(Math.random() * 50);
+        })
+        .attr('clip-path', 'url(#clip)')
+        .attr('d', function(d) {
+          return line(d);
+        })
+
+  /* Add 'curtain' rectangle to hide entire graph */
+  var curtain = svg.append('rect')
+    .attr('x', -1 * lwidth)
+    .attr('y', -1 * lheight)
+    .attr('height', lheight)
+    .attr('width', lwidth)
+    .attr('class', 'curtain')
+    .attr('transform', 'rotate(180)')
+    .style('fill', '#ffffff')
+
+  /* Optionally add a guideline */
+  var guideline = svg.append('line')
+    .attr('stroke', '#333')
+    .attr('stroke-width', 0)
+    .attr('class', 'guide')
+    .attr('x1', 1)
+    .attr('y1', 1)
+    .attr('x2', 1)
+    .attr('y2', lheight)
+
+  /* Create a shared transition for anything we're animating */
+  var t = svg.transition()
+    .delay(750)
+    .duration(6000)
+    .ease('linear')
+    .each('end', function() {
+      d3.select('line.guide')
+        .transition()
+        .style('opacity', 0)
+        .remove()
+    });
+
+  t.select('rect.curtain')
+    .attr('width', 0);
+  t.select('line.guide')
+    .attr('transform', 'translate(' + lwidth + ', 0)')
+
+  d3.select("#show_guideline").on("change", function(e) {
+    guideline.attr('stroke-width', this.checked ? 1 : 0);
+    curtain.attr("opacity", this.checked ? 0.75 : 1);
+  })
+
+});
+
+// Parse dates and numbers. We assume values are sorted by date.
+function type(d) {
+  d.date = parse(d.date);
+  d.price = +d.price;
+  return d;
+}
+
+
+
+
+
+</script>
+
+</div>
+</div>
+</div>
+</div>
+
+    <script src="http://d3js.org/d3.v3.js"></script>
+  </head>
+<!-- color = #f0ffff-->
+    <h4 style="position: absolute; left: 20px; color:#fff8dc">Heated Discussion</h4>
+  <div style="position: relative; top: 20px;"><section align="left">
+    <div id="chart"></div>
+    <script type="text/javascript">
+      var margin = { top: 150, right: 0, bottom: 100, left: 250 },
+          width = 660 - margin.left - margin.right,
+          height = 2030 - margin.top - margin.bottom,
+          gridSize = Math.floor(width / 15),
+          legendElementWidth = gridSize*2,
+          buckets = 7,
+          //colors = ["#d73027", "#fc8d59", "#fee08b", "#ffffbf", "#d9ef8b", "#91cf60", "#1a9850"] 
+          colors = ["#edf8fb", "#ccece6", "#99d8c9", "#66c2a4", "#41ae76", "#238b45", "#005824"],//colorbrewer.BuGn[5]
+          days = ['Adelaide Willis', 'ADOC', 'Andrea Vu', 'Antonio Arboleda', 'Arthur Vatz', 'Augusto Silva', 'Bennett Lee', 'Beverley Kornder', 'Calvin Hung', 'Daniel Firestone', 'David Bender', 'Denise Hom', 'Diana Dermendjian', 'Elena Kandel', 'Elise Pomerance', 'Emily Ryan', 'Eric Fernandez', 'Frederick Lindberg', 'Gil Bender', 'Gregory Harmon', 'Harry Drummond', 'Haydee Arboleda', 'Heather Shenkman', 'Ileana Pat', 'Irvin Benowitz', 'Jasmine Yun', 'Jenifer Chungafung', 'Jenny Hwang', 'Jerry Garrett','John Kasher', 'John Whelan', 'Kamel Azmy', 'Karen Virley', 'Kenneth Ballan', 'Kenneth Epstein', 'LMG', 'Leah Heap', 'Lev Gelman', 'Maximo Diamond', 'Mehrnaz Jamali', 'Mikhail Blinchik', 'Myrna Uytingco', 'Olga Lerner', 'Paul Ephraim', 'Paul Lee', 'Paul Whyte', 'Poulet Nikolay', 'Ramesh Kesavalu', 'RMG', 'Renita Pullens', 'Robert Riechmann', 'Robin Alleyne', 'Ruth Karunananthan', 'Scott Gregor', 'Shahram Mirhashemi', 'Sherri Tysch', 'Susanna Lansangan', 'Vasanti Voleti', 'Verna Liss', 'Virginia Veloso'],
+          times = ["wait","rude","service","phone","appointment","letter"], 
+          datasets = ["data1"];
+
+      var svg = d3.select("#chart").append("svg")
+          .attr("width", width + margin.left + margin.right)
+          .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+      var dayLabels = svg.selectAll(".dayLabel")
+          .data(days)
+          .enter().append("text")
+            .text(function (d) { return d; })
+            .attr("x", 0)
+            .attr("y", function (d, i) { return i * gridSize; })
+            .style("text-anchor", "end")
+            .attr("transform", "translate(-6," + gridSize / 1.5 + ")")
+            .attr("class", function (d, i) { return ((i >= 0 && i <= 60) ? "dayLabel mono axis axis-workweek" : "dayLabel mono axis"); });
+
+      var timeLabels = svg.selectAll(".timeLabel")
+          .data(times)
+          .enter().append("text")
+            .text(function(d) { return d; })
+            .attr("transform", function(d, i) { 
+            return "translate(" + ( i * gridSize) + ",0)"
+            + "translate(" + gridSize / 2 + ", -6)rotate(-65)";} )
+            .style("text-anchor", "start")
+            .attr("class", function(d, i) { return ((i >= 0 && i <= 16) ? "timeLabel mono axis axis-worktime" : "timeLabel mono axis"); });
+            
+      var heatmapChart = function(tsvFile) {
+        d3.tsv(tsvFile,
+        function(d) {
+          return {
+            day: +d.day,
+            hour: +d.hour,
+            value: +d.value
+          };
+        },
+        function(error, data) {
+          var colorScale = d3.scale.quantile()
+              .domain([0, buckets - 1, d3.max(data, function (d) { return d.value; })])
+              .range(colors);
+
+          var cards = svg.selectAll(".hour")
+              .data(data, function(d) {return d.day+':'+d.hour;});
+
+          cards.append("title");
+
+          cards.enter().append("rect")
+              .attr("x", function(d) { return (d.hour - 1) * gridSize; })
+              .attr("y", function(d) { return (d.day - 1) * gridSize; })
+              .attr("rx", 4)
+              .attr("ry", 4)
+              .attr("class", "hour bordered")
+              .attr("width", gridSize)
+              .attr("height", gridSize)
+              .style("fill", colors[0]);
+
+          cards.transition().duration(1000)
+              .style("fill", function(d) { return colorScale(d.value); });
+
+          cards.select("title").text(function(d) { return d.value; });
+          
+          cards.exit().remove();
+
+        });  
+      }; 
+
+      heatmapChart(datasets[0]);
+    </script>
+  </div>
+{% if qq | length > 0 %}
+<div id="container" class="row" style="position: absolute; top: 850px; left: 240px;"><!-- left:270px;">-->
+<div class="col s9 ">
+        <div class="card teal tiny lighten-5 z-depth-2" style="left: 180px; top: 20px;">
+                <div class="card-content">
+                        <p><font size="3">Random Thought</font></p>
+                        <br>
+                        <center><strong><p><font size="5">"{{qq | safe}}"</font></p></strong></center>
+                </div>
+                </div>
+        </div>
+</div>
+{% endif %}
+
+<div id="container2" style="position: absolute; top: 1700px; left: 550px;">
+<!-- Trigger the Modal -->
+<img id="myImg" src="../static/all_cloud.svg" alt="Word Cloud" width="600" height="400">
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- The Close Button -->
+  <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+  <!-- Modal Content (The Image) -->
+  <img class="modal-content" id="img01">
+
+  <!-- Modal Caption (Image Text) -->
+  <div id="caption"></div>
+</div>
+
+
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById('myImg');
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    modalImg.alt = this.alt;
+    captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+</script>
+</div>
+<div id="chart2" style="position: absolute; top: 1075px; left: 400px;"><!--left: 1050px;">-->
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script type="text/javascript">
+
+var width = 860,
+    height = 600,
+    radius = Math.min(width, height) / 2;
+
+var x = d3.scale.linear()
+    .range([0, 2 * Math.PI]);
+
+var y = d3.scale.linear()
+    .range([0, radius]);
+
+var color = d3.scale.category20c();
+
+var svg1 = d3.select("#chart2").append("svg")
+    .attr("width", width)
+    .attr("height", height + 100)
+  .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + (height / 2 + 10) + ")");
+
+var partition = d3.layout.partition()
+    .value(function(d) { return d.size; });
+
+var arc = d3.svg.arc()
+    .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
+    .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
+    .innerRadius(function(d) { return Math.max(0, y(d.y)); })
+    .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
+
+d3.json("sunburst", function(error, root) {
+  var g1 = svg1.selectAll("g")
+      .data(partition.nodes(root))
+    .enter().append("g");
+
+  var path = g1.append("path")
+    .attr("d", arc)
+    .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
+    .on("click", click);
+
+  var text = g1.append("text")
+    .attr("transform", function(d) { return "rotate(" + computeTextRotation(d) + ")"; })
+    .attr("x", function(d) { return y(d.y); })
+    .attr("dx", "6") // margin
+    .attr("dy", ".35em") // vertical-align
+    .text(function(d) { return d.name; });
+
+  function click(d) {
+    // fade out all text elements
+    text.transition().attr("opacity", 0);
+
+    path.transition()
+      .duration(750)
+      .attrTween("d", arcTween(d))
+      .each("end", function(e, i) {
+          // check if the animated element's data e lies within the visible angle span given in d
+          if (e.x >= d.x && e.x < (d.x + d.dx)) {
+            // get a selection of the associated text element
+            var arcText = d3.select(this.parentNode).select("text");
+            // fade in the text element and recalculate positions
+            arcText.transition().duration(750)
+              .attr("opacity", 1)
+              .attr("transform", function() { return "rotate(" + computeTextRotation(e) + ")" })
+              .attr("x", function(d) { return y(d.y); });
+          }
+      });
+  }
+});
+
+d3.select(self.frameElement).style("height", height + "px");
+
+// Interpolate the scales!
+function arcTween(d) {
+  var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
+      yd = d3.interpolate(y.domain(), [d.y, 1]),
+      yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
+  return function(d, i) {
+    return i
+        ? function(t) { return arc(d); }
+        : function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); return arc(d); };
+  };
+}
+
+function computeTextRotation(d) {
+  return (x(d.x + d.dx / 2) - Math.PI / 2) / Math.PI * 180;
+}
+
+</script>
+</div>
+</div>
+
+
+</body>
+{% endif %}
+</html>

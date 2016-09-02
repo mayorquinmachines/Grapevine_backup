@@ -1,0 +1,124 @@
+Location,Co,Clinic/Admin,Last Name,First Name,Title
+2755 Alamo,LMG,Admin,Bender,Gil,Medical Director
+2755 Alamo,LMG,Clinic,Drummond,Harry,Physician
+2755 Alamo,LMG,Clinic,Hom,Denise,Family Practice Physician
+2755 Alamo,LMG,Clinic,Lee,Bennett,Family Practice Physician
+2755 Alamo,RMG,Clinic,Lee,William,Physician
+2755 Alamo,RMG,Clinic,Mahdavie,Karim,Physician
+2755 Alamo,RMG,Clinic,Mistry,Roxanne,Pediatrician
+2755 Alamo,RMG,Clinic,Reddy,Deepa,Physician
+2755 Alamo,RMG,Clinic,Shaw,Richard,Physician
+2755 Alamo,RMG,Clinic,Taylor,Sharon,Pediatrician
+2755 Alamo,RMG,Clinic,Trompetto,Brent,Physician
+2755 Alamo,RMG,Clinic,Whyte,Paul,Physician
+425 TO,RMG,Clinic,Kornder,Beverley,Physician
+425 TO,RMG,Clinic,Srinivasa,Anitha,Physician
+612 TO,LMG,Clinic,Ahmed,Nusrat,Physician
+612 TO,LMG,Clinic,Lindberg,Frederick,Family Practice Physician
+612 TO,LMG,Clinic,Liss,Verna,Family Practice Physician
+612 TO,RMG,Clinic,Tysch,Sherri,Pediatrician
+Arcadia,RMG,Clinic,Tan,Peter X.,Physician
+Barranca,RMG,Admin,Berenson,Yehuda,CMO
+Buena Vista,RMG,Clinic,Artavia,Luis,Medical Director Asst
+Buena Vista,LMG,Clinic,Ballan,Kenneth,Gastroenterologist
+Buena Vista,LMG,Clinic,Bender,David,Pediatrician
+Buena Vista,LMG,Clinic,Del Castillo,Silvio,Family Practice Physician
+Buena Vista,LMG,Clinic,Dermendjian,Diana,Family Practice Physician
+Buena Vista,LMG,Clinic,Ephraim,Paul,Gastroenterologist
+Buena Vista,LMG,Clinic,Ghanevati,Mahin,Family Practice Physician
+Buena Vista,LMG,Clinic,Hajian,Petros,Family Practice Physician
+Buena Vista,LMG,Clinic,Harmon,Gregory,Gastroenterologist
+Buena Vista,LMG,Clinic,Kao,James,Gastroenterologist
+Buena Vista,LMG,Clinic,Kasher,John,Gastroenterologist
+Buena Vista,LMG,Clinic,Kawano,Jordan,Cardiologist
+Buena Vista,LMG,Clinic,Lansangan,Susanna,Internal Medicine Phys
+Buena Vista,LMG,Clinic,Lee,Paul,InternalMedicine LeadPhys
+Buena Vista,LMG,Clinic,Lerner,Olga,Endocrinologist
+Buena Vista,LMG,Clinic,Madrid,Cecelia T.,Internal Medicine Phys
+Buena Vista,LMG,Clinic,Nikolay,Poulet,Physician
+Buena Vista,LMG,Clinic,Obradovic,Petra,Pediatrician
+Buena Vista,LMG,Clinic,Selak Stankovic,Renata,Internal Medicine Phys
+Buena Vista,LMG,Clinic,Shenkman,Heather,Cardiologist
+Buena Vista,LMG,Clinic,Silva,Augusto,Cardiologist
+Buena Vista,LMG,Clinic,Stein,Gerry,Podiatrist
+Buena Vista,LMG,Clinic,Tsang,Janet,Cardiologist
+Buena Vista,LMG,Clinic,Vatz,Arthur,Urologist
+Buena Vista,LMG,Clinic,Vayupakparnonde,Rungsima,Pediatrician
+Buena Vista,LMG,Clinic,Voleti,Vasanti,Medical Director
+Buena Vista,LMG,Clinic,Woo,Jeanie,Cardiologist
+Buena Vista,LMG,Clinic,Whelan,John,Medical Director Asst
+Burbank 250,LMG,Clinic,Arboleda,Antonio,Pediatrician
+Burbank 250,LMG,Clinic,Arboleda,Haydee,Internal Medicine Phys
+Covina,RMG,Admin,Almirante,Remedios,Medical Director Senior
+Glendale,RMG,Clinic,Berger,Eliana,Endocrinologist
+Glendale,LMG,Clinic,Cagan,Judith,Family Practice Physician
+Glendale,LMG,Clinic,Karakashian,Aram,Family Practice Physician
+Glendale,LMG,Clinic,Kesavalu,Ramesh,Rheumatology Physician
+Glendale,LMG,Clinic,Mirhashemi,Shahram,Family Practice Physician
+Glendale,LMG,Clinic,Shi,Terry S.,Podiatrist
+Glendale,LMG,Clinic,Veloso,Virginia,Family Practice Physician
+Glendale,LMG,Clinic,Zaghi M.D.,Danny,Internal Medicine Phys
+Hospital,LMG,Hospitalist,Kohan,Sid,Hospitalist
+Hospital,LMG,Hospitalist,Benowitz,Irvin,Hospitalist
+Hospital,LMG,Hospitalist,Blinchik,Mikhail,Medical Director Asst
+Hospital,LMG,Hospitalist,Kama,N'Deye,Hospitalist
+Hospital,LMG,Hospitalist,Limurti,Joyce,Hospitalist
+Hospital,LMG,Hospitalist,Montes,Joy,Hospitalist
+Hospital,LMG,Hospitalist,Peiris,Baminihannadige,Hospitalist
+Hospital,LMG,Hospitalist,Pullens,Renita,Hospitalist SNF
+Hospital,LMG,Hospitalist,Riechmann,Robert,Hospitalist
+Hospital,LMG,Hospitalist,Ryan,Emily,Lead Hospitalist
+Hospital,RMG,Hospitalist,Shao,Maogang,Hospitalist
+Hospital,LMG,Hospitalist,Razeghi,Mehdi,Hospitalist
+Hospital,LMG,Hospitalist,Gelman,Lev,Hospitalist
+Hospital,LMG,Hospitalist,Henry,Tamika,Hospitalist
+Hospital,RMG,Hospitalist,Fletcher,Jason M.,Hospitalist
+Hospital,LMG,Hospitalist,Hazzan,Samar,Hospitalist
+Mission Hills,LMG,Clinic,Alfaro,Maria,Internal Medicine Phys
+Mission Hills,LMG,Clinic,Alleyne,Robin,Internal Medicine Phys
+Mission Hills,LMG,Clinic,Esparrago,Jose M.,Internal Medicine Phys
+Mission Hills,LMG,Clinic,Kaplan,Karl J.,Internal Medicine Phys
+Mission Hills,LMG,Clinic,Plotkin,Elliot,Podiatrist
+Mission Hills,LMG,Clinic,Qozi-Habash,Tedmur,Family Practice Physician
+Mission Hills,LMG,Clinic,Slavov,Carmen,Medical Director Asst
+Mission Hills,LMG,Clinic,Uytingco,Myrna,Internal Medicine Phys
+North Hollywood,LMG,Admin,Lee,Timothy,"Med Dir, Skilled Nrsng Cr"
+North Hollywood,LMG,Clinic,Beroukhim Afrahimi,Shiva,Family Practice Physician
+North Hollywood,LMG,Clinic,Heap,Leah,Family Practice Physician
+North Hollywood,LMG,Clinic,Kandel,Elena,Dermatologist
+North Hollywood,LMG,Clinic,Virley,Karen,Internal Medicine Phys
+Northridge,RMG,Admin,Pomerance,Elise,Medical Director
+Northridge,RMG,Admin,Epstein,Kenneth,Assoc. Medical Director
+Northridge,RMG,Admin,Ghalchi,Daniel,Medical Director Asst
+Northridge,RMG,Admin,Hammash,Muhannad,Medical Director Regional
+Northridge,RMG,Admin,Hasan,Syed Ashraf,CMO
+Northridge,RMG,Admin,Herman,Sheldon,Assoc. Medical Director
+Northridge,LMG,Admin,Ingaglio,James J.,Medical Director
+Northridge,LMG,Admin,Lanier,Derek,Regional Medical Director
+Northridge,LMG,Admin,Villanueva,Israel,Assoc. Medical Director
+Orange,ADOC,Admin,Diamond,Maximo,Medical Director
+Orange,RMG,Admin,Firestone,Daniel,Medical Director
+Orange,LMG,Admin,Jamali,Mehrnaz,Medical Director
+Orange,RMG,Admin,Lubavin,Boris,Medical Director
+Orange,RMG,Admin,Wangyal,Tenzing,Medical Director
+Santa Clarita,LMG,Admin,Brenner,Stacey,Med Dir HCC & Star/PCP
+Santa Clarita,LMG,Clinic,Fernandez,Eric,Physician
+Santa Clarita,LMG,Clinic,Garrett,Jerry,Urologist
+Santa Clarita,LMG,Clinic,Hung,Calvin,Family Practice Physician
+Santa Clarita,LMG,Clinic,Sherman,Larry M.,Pediatrician
+Santa Clarita,RMG,Clinic,Vu,Andrea,Family Practice Physician
+West Covina,LMG,Admin,Dabuni,Ziad,Medical Director
+West Covina,LMG,Clinic,Azmy,Kamel,Pediatrician
+West Covina,LMG,Clinic,Chungafung,Jenifer,Family Practice Physician
+West Covina,LMG,Clinic,Duong,Van,Family Practice Physician
+West Covina,LMG,Clinic,Hwang,Jenny,Internal Medicine Phys
+West Covina,LMG,Clinic,Karunananthan,Ruth,Internal Medicine Phys
+West Covina,LMG,Clinic,McGinn,Daniel,Urgent Care Physician
+West Covina,LMG,Clinic,Nguyen,Huy Tu,Family Practice Physician
+West Covina,LMG,Clinic,Pascual,Edmund,Pediatrician
+West Covina,LMG,Clinic,Wang,Tei Chen,Urgent Care Physician
+West Covina,LMG,Clinic,Wicherski,Beata,Pediatrician
+West Covina,LMG,Clinic,Willis,Adelaide,Family Practice Physician
+West Hills,LMG,Clinic,Gregor,Scott,Family Practice Physician
+West Hills,LMG,Clinic,Pat,Ileana,Endocrinologist
+West Hills,LMG,Clinic,Yun,Jasmine,Dermatologist

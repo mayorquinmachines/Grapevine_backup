@@ -1,0 +1,209 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+
+nav .nav-wrapper form, nav .nav-wrapper form .input-field{
+    height: 64px;
+}
+
+/*body {
+    background-image: url("lighthouse_2.png");
+    background-repeat: no-repeat;
+    background-position: right top;
+}*/
+
+/*.graph{
+    display:none;
+}*/
+
+.fixed-action-btn ul {
+   left:auto ;
+}
+
+#container {
+  float: right;			
+}
+
+
+/* wrapper style id */
+#wrapper {
+    margin-left:auto;
+    margin-right:auto;
+    width:960px;
+}
+/* */
+
+
+.parallax-container {
+    position:static;
+    height: "50px";
+}
+a {
+    font-family:arial;
+}
+
+#content2 {
+    background-image: url("crazy_pattern2_teal.jpg");
+}
+#scoutrises {
+    background-image: url("peacock_color.jpeg");
+    width: 80%;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+}
+#err_500{
+    background-image: url("terry_magnifying_glass_2.png");
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+}
+.grow {
+padding: 5px 5px 5px 5px;
+border-radius: 10px;
+height: 120px;
+width: 100%;
+margin: 5px 1% 5px 1%;
+float: left;
+position: relative;
+transition: height 0.5s;
+-webkit-transition: height 0.5s;
+text-align: left;
+}
+.grow:hover {
+height: 320px;
+}
+
+.highlight .striped {
+height: 10%
+}
+
+.grow2 {
+padding: 5px 5px 5px 5px;
+border-radius: 10px;
+height: 280px;
+width: 44%;
+margin: 5px 1% 5px 1%;
+float: left;
+position: static;
+transition: height 1.5s width 1.5s;
+-webkit-transition: height 2s width 2s;
+text-align: left;
+}
+
+.card .card-image img {
+      border-radius: 2px 2px 0 0;
+      position: relative;
+      left: 20%;
+      right: 0;
+      top: 10px;
+      bottom: 0;
+      width: 90px;
+}
+    
+
+.card .card-title {
+      font-size: 20px;	
+}
+
+
+
+
+label {
+  font-size: 1.2rem;
+}
+
+/* Modal Image */
+
+/* Style the Image Used to Trigger the Modal */
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    max-height: 100%;
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 500%;
+    max-width: 1700px;
+}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption { 
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
+
